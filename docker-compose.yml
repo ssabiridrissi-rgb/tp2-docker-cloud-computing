@@ -1,0 +1,15 @@
+services:
+  train:
+    image: adult-train:naif
+    volumes:
+      - ./artifacts:/artifacts
+    command: python -m src.train
+
+  serve:
+    image: adult-serve:opt6
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./artifacts:/artifacts
+    depends_on:
+      - train

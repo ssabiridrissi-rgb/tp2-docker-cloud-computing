@@ -1,4 +1,4 @@
-"""Service d'inference : API HTTP minimale autour du modele entraine.
+﻿"""Service d'inference : API HTTP minimale autour du modele entraine.
 
 Deux modes :
     python -m src.predict --input data/sample.csv     # lot, en ligne de commande
@@ -103,4 +103,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-# test rebuild

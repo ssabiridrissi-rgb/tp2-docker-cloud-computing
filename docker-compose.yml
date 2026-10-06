@@ -1,15 +1,21 @@
 services:
   train:
+    build:
+      context: .
+      dockerfile: Dockerfile.train
     image: adult-train:naif
     volumes:
       - ./artifacts:/artifacts
-    command: python -m src.train
 
   serve:
-    image: adult-serve:opt6
+    build:
+      context: .
+      dockerfile: Dockerfile.serve.opt
+    image: ghcr.io/ssabiridrissi-rgb/adult-serve:opt6
     ports:
       - "8000:8000"
     volumes:
       - ./artifacts:/artifacts
     depends_on:
-      - train
+      train:
+        condition: service_completed_successfully
